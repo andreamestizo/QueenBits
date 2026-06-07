@@ -1,0 +1,66 @@
+:root {
+  --c-wine: #7f1757;
+  --c-plum: #a11f6d;
+  --c-pink: #fd3e7e;
+  --c-cream: #f8f3f6;
+  --c-orange: #f24023;
+  --c-amber: #f19041;
+
+  --bg: var(--c-cream);
+  --panel: #ffffff;
+  --text: #3a1430;
+  --text-soft: #7c5a70;
+  --border: rgba(127, 23, 87, 0.14);
+  --shadow: 0 18px 50px -18px rgba(127, 23, 87, 0.35);
+
+  --sans: 'Segoe UI', system-ui, Roboto, sans-serif;
+  font: 16px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--bg);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  color: var(--c-wine);
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--c-plum);
+  border-radius: 6px;
+}
+
+button {
+  font-family: var(--sans);
+  cursor: pointer;
+}
+
+a {
+  color: var(--c-pink);
+}

@@ -87,6 +87,29 @@ npm start
 
 Abre **http://localhost:3000**.
 
+## Despliegue en Vercel
+
+Vercel no ejecuta un servidor Express persistente como `server.ts` — sirve el frontend como
+sitio estático y convierte los archivos dentro de `api/` en funciones serverless. Por eso el
+chat tiene una segunda implementación pensada para ese entorno: **`api/chat.ts`** (con la misma
+lógica e instrucción de sistema que `server.ts`, compartida desde `api/_chatPrompt.ts` para que
+ambas no se desincronicen).
+
+Para desplegarlo:
+
+1. Sube el repositorio a GitHub e impórtalo en [vercel.com](https://vercel.com/new). Vercel
+   detecta automáticamente que es un proyecto Vite (la configuración también está explícita en
+   `vercel.json`: build con `vite build`, salida en `dist/`, y `api/chat.ts` como función
+   serverless).
+2. En **Project → Settings → Environment Variables**, agrega `GEMINI_API_KEY` con tu clave de
+   Google AI Studio. (Nunca subas tu `.env` — Vercel inyecta esta variable directamente en la
+   función serverless en producción).
+3. Despliega. El `fetch('/api/chat', …)` del chatbot seguirá funcionando sin cambios: Vercel
+   enruta automáticamente `/api/*` a la función correspondiente.
+
+`server.ts` sigue siendo el backend para desarrollo local (`npm run server` / `npm start`); no
+forma parte del despliegue en Vercel.
+
 ## Scripts disponibles
 
 | Script            | Descripción                                                            |

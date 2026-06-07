@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Vercel
+.vercel
+
 # Variables de entorno con secretos (GEMINI_API_KEY)
 .env
 
